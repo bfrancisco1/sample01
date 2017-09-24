@@ -38,12 +38,14 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "client01" do |client01|
-    client01.vm.box = "chad-thompson/ubuntu-trusty64-gui"
-    client01.vm.hostname = "client01.test"
-    client01.vm.network "private_network", ip: "192.168.102.13",
-      virtualbox__intnet: "webnetwork"
-    client01.vm.provider "virutalbox" do |v|
+  config.vm.define "client" do |client|
+    client.vm.box = "bento/centos-7.2"
+    client.vm.hostname = "client"
+    client.vm.network "private_network", ip: "192.168.101.15"
+    client.vm.provision "shell" do |s|
+      s.path = "clientvpn.sh"
+    end
+    client.vm.provider "virutalbox" do |v|
       v.memory = 256
       v.cpus = 1
     end
@@ -59,10 +61,12 @@ Vagrant.configure("2") do |config|
       s.path = "bootstrap.sh"
       s.args = ["-A","192.168.101.10", "stable", "2017.7.1"]
     end
+    vpnserver.vm.provision "shell" do |t|
+      t.path = "openvpn.sh"
+    end
     vpnserver.vm.provider "virtualbox" do |v|
       v.memory = 512
       v.cpus = 2
     end
   end
-
 end
