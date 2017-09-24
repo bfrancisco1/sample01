@@ -1,1 +1,2 @@
-V	270920031836Z		01	unknown	/C=US/ST=WI/L=Milwaukee/O=Francisco ORG/OU=IT/CN=server/name=server/emailAddress=ben@francisco.org
+V	270921022232Z		01	unknown	/C=US/ST=WI/L=Milwaukee/O=Francisco ORG/OU=IT/CN=server/name=server/emailAddress=./build-dh
+V	270921023745Z		02	unknown	/C=US/ST=WI/L=Milwaukee/O=Francisco ORG/OU=IT/CN=client/name=client/emailAddress=ben@francisco.org
